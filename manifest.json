@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Cookie Grabber",
+  "version": "1.0.0",
+  "description": "Extract cookies and session storage for web testing. Export to JSON for Postman, Playwright, and other testing tools.",
+  "author": "Keshav",
+  "permissions": [
+    "cookies",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
